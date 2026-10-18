@@ -11,7 +11,14 @@ W,H=1000,600; GROUND=485; FPS=60; SAVE='coin_runner_save.json'
 screen = pygame.display.set_mode((W, H), pygame.RESIZABLE)
 pygame.display.set_caption("Coin Runner Pro")
 clock = pygame.time.Clock()
+# Load Modi ji head image
+modi_head_img = pygame.image.load(
+    "images/head.png.png"
+).convert_alpha()
 
+modi_head_img = pygame.transform.smoothscale(
+    modi_head_img, (36, 36)
+)
 # Fixed-size canvas for responsive scaling
 canvas = pygame.Surface((W, H))
 WHITE=(255,255,255); DARK=(28,44,68); GOLD=(255,194,40); BLUE=(55,135,245); PURPLE=(154,95,230); RED=(240,82,83)
@@ -73,7 +80,19 @@ def boy(s,x,feet,t,jumping,sliding,shield=False):
     phase=math.sin(t*15); bob=0 if jumping or sliding else int(abs(phase)*3)
     pygame.draw.ellipse(s,(20,50,80),(x-4,feet-7,48,12))
     if sliding:
-        pygame.draw.ellipse(s,(35,135,246),(x-3,feet-37,48,25)); pygame.draw.circle(s,(255,202,155),(x+39,feet-31),14); pygame.draw.arc(s,(74,43,29),(x+26,feet-46,27,22),math.pi,math.tau,7); pygame.draw.circle(s,DARK,(x+43,feet-33),2)
+        pygame.draw.rect(
+            s, (235,166,115),
+            (x+17, by-5, 10, 10),
+            border_radius=3
+        )
+
+        hy = by - 19
+
+        # Draw Modi ji head
+        s.blit(modi_head_img, (int(x+4), int(hy-18)))
+
+        # Shirt badge
+        pygame.draw.circle(s, (255,223,87), (x+23,by+12), 4)
     else:
         swing=int(phase*10) if not jumping else -5; by=feet-55+bob
         pygame.draw.line(s,(32,70,135),(x+14,by+30),(x+11+swing,feet-4),8); pygame.draw.line(s,(32,70,135),(x+25,by+30),(x+27-swing,feet-4),8)
