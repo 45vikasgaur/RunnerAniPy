@@ -21,7 +21,7 @@ modi_head_img = pygame.transform.smoothscale(
 )
 # Fixed-size canvas for responsive scaling
 canvas = pygame.Surface((W, H))
-WHITE=(255,255,255); DARK=(28,44,68); GOLD=(255,194,40); BLUE=(55,135,245); PURPLE=(154,95,230); RED=(240,82,83)
+WHITE=(255,255,255); DARK=(28,44,68); GOLD=(255,194,40); BLUE=(55,135,245); PURPLE=(154,95,230); RED=(240, 82,83)
 FONT=pygame.font.SysFont('arial',22,bold=True); SMALL=pygame.font.SysFont('arial',16,bold=True); BIG=pygame.font.SysFont('arial',48,bold=True); HUGE=pygame.font.SysFont('arial',65,bold=True)
 def text(s,t,font,col,pos,center=False):
     im=font.render(str(t),True,col); r=im.get_rect(); r.center=pos if center else r.center
